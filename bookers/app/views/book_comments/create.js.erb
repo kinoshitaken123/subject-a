@@ -1,0 +1,5 @@
+<!--エスケープされていないと実行される可能性がある悪意のあるコード（悪意のあるユーザー）を投稿する可能性があります。-->
+$('#comment_area').html("<%= escape_javascript(render 'book_comments/comment_index', book: @book) %>");
+$('#comment_form').html("<%= escape_javascript(render "book_comments/comment_form", book: @book, comment: @comment_new) %>");
+
+$("textarea").val('') <!--#発火した際のtext_fieldを空白に更新するように指定-->

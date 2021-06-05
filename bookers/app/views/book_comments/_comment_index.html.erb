@@ -1,0 +1,21 @@
+<!--コメント一覧の部分テンプレート-->
+  
+<tbody>
+  <% book.book_comments.each do |book_comment| %>
+     <tr>
+       <th><%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></th>
+       <br>
+       <th><%= link_to @book.user.name,books_path %></th>
+        
+        <%= book_comment.comment %>
+        <th>
+       
+          <%= link_to "Destroy", book_book_comment_path(book,book_comment), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+
+        </th>
+         
+      </td>
+      
+    </tr>
+  <% end %>
+</tbody>

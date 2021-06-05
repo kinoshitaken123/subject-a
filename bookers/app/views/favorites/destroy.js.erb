@@ -1,0 +1,2 @@
+<!--指定したセレクタ(idの部分)のみHTMLをrenderして部分的に更新します。-->
+$("#book_<%= @book.id %>").html("<%= j(render 'favorites/favorite', book: @book) %>");

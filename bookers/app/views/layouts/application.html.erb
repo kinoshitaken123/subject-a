@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2-debug</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  
+  <body>
+      
+    <%= render 'layouts/header' %>
+        <p id="notice"><%= notice %></p>
+    
+    <div class="row">
+    <div class="col text-center">
+     <% if user_signed_in? %>
+       <%= render 'layouts/search'%>
+      <% end %> 
+    </div>
+    </div>
+        
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <div class="search-box">
+
+    </div>
+  </body>
+</html>
