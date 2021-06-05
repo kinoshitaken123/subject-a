@@ -13,7 +13,7 @@ class Book < ApplicationRecord
   end
 
   def self.last_week
-	@rank = Book.Joins(:favorites).where(favorites: { created_at:  0.days.ago.prev_week..0 .days.ago.prev_week(:sunday)}.group(:id).order("count(*) desc"))
+	Book.Joins(:favorites).where(favorites: { created_at:  0.days.ago.prev_week..0 .days.ago.prev_week(:sunday)}.group(:id).order("count(*) desc"))
   end
 
 end

@@ -75,3 +75,4 @@ gem 'pry-byebug'
 gem 'ransack'
 
 gem 'jquery-rails'
+gem 'redis'
