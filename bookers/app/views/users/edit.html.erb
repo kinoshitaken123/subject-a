@@ -1,13 +1,14 @@
 <%#= render 'layouts/errors' %>
+<div class="container">
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
   <h2>User info</h2>
-    
+
   <%= form_with model:@user,local:true do |f| %>
 
-  
+
   <div class="user-name">Name</div>
     <%= f.text_field :name %>
   <div class="user-edit-image">Image</div>

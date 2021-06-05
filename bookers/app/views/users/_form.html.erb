@@ -1,14 +1,12 @@
 <table class='table'>
-  <tr><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></tr>
-  <tr>
+  <tr><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
 	  <th>name</th>
 	  <th><%= user.name %></th>
-  </tr>
   <tr>
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
- 
+
 </table>
 
 <div class="row">

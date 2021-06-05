@@ -51,7 +51,7 @@ class BooksController < ApplicationController
   end
 
   def weekly_rank
-  	 @ranks =Book.Joins(:favorites).where(favorites: { created_at:  0.days.ago.prev_week..0 .days.ago.prev_week(:sunday)}.group(:id).order("count(*) desc"))
+  	 @rank =Book.Joins(:favorites).where(favorites: { created_at:  0.days.ago.prev_week..0 .days.ago.prev_week(:sunday)}.group(:id).order("count(*) desc"))
   end
 
   private
