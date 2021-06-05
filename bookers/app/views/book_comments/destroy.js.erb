@@ -1,0 +1,2 @@
+<!--エスケープされていないと実行される可能性がある悪意のあるコード（悪意のあるユーザー）を投稿する可能性があります。-->
+$('#comment_area').html("<%= escape_javascript(render 'book_comments/comment_index', book: @book) %>");

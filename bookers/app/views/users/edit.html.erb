@@ -1,0 +1,27 @@
+<%#= render 'layouts/errors' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <h2>User info</h2>
+    
+  <%= form_with model:@user,local:true do |f| %>
+
+  
+  <div class="user-name">Name</div>
+    <%= f.text_field :name %>
+  <div class="user-edit-image">Image</div>
+    <%= f.attachment_field :profile_image %>
+  <div class="form-body">Introduction</div>
+    <%= f.text_area :introduction %><br>
+  <div class="upload">
+    <%= f.submit " Update User" %>
+  </div>
+
+    <%= link_to "Show", @user, class: "user_#{@user.id}" %>
+    <%= link_to "Back", users_path, class: "back" %>
+ <% end %>
+
+ </div>
+</div>
+

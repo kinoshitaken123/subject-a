@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead>
+    <tr><th></th><th>Title</th><th>Opinion</th><th></th><th></th></tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+    <tr>
+      <td>
+        <%= link_to user_path(book.user) do %>
+          <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: 'no-image.jpg', size:'50x50' %>
+        <% end %>
+      </td>
+      <td><%= link_to book.title, book_path(book) %></td>
+      <td><%= book.body %></td>
+
+      <td>
+        <div id="book_<%= book.id %>">
+         <%= render 'favorites/favorite', book: book %>
+        </div>
+      </td>
+
+      <td>コメント数：<%= book.book_comments.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
