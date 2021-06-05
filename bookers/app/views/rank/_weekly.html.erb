@@ -1,47 +1,19 @@
 <div class="rank-container">
- <% @ranks.each.with_index(1) do |book, i| %>
+ <% ranks.each.do |book| %>
   <div class="rank-box">
    <%= i %>位
-    <div class="card shadow-lg">
-         
-        
-        
-    </div>  
-  </div>
- <% end %>    
-</div>
+    <div class="table">
+      <% book.book_comments.each do |book_comment| %>
+      <tr>
+        <th><%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></th>
+        <br>
+        <th><%= link_to @book.user.name,books_path %></th>
 
 
+        <th><%= book_comment.comment %></th>
 
+        <% end %>
 
-
-
-<div class="rank-container">
-  <% @ranks.each.with_index(1) do |cook, i| %>
-  <div class="rank-box">
-    <%= i %>位
-    <div class="card shadow-lg">
-      <%= link_to cook_path(cook) do %>
-        <%= attachment_image_tag cook, :image, :fill, 200, 120, class:"card-img-top"; %>
-      <% end %>
-      <%= link_to user_path(cook.user) do %>
-        <span class="account ml-2 mt-2">By <%= cook.user.account %></span>
-      <% end %>
-      <div class="card-body pt-1 pb-1">
-        <p class="card-title mb-0">◆<%= cook.name.truncate(10) %></p>
-        <p class="mb-1"><%= cook.comment.truncate(13) %></p>
-        <div class="row border-top m-auto">
-          <div class="col-6">
-            <%= link_to user_path(cook.user) do %>
-            <%= attachment_image_tag cook.user, :account_image, :fill, 50, 50, fallback: "no_image.jpg", class:" rounded-circle no-image"; %><br>
-            <% end %>
-          </div>
-          <div class="col-5 offset-1 pt-3">
-            <%= link_to "詳細", cook_path(cook), class: "btn btn-sm btn-dark" %>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-  <% end %>
-</div>
+ <% end %>
