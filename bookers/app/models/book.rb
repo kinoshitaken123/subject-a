@@ -11,12 +11,12 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-now = Time.current
+
   def self.last_week_ranks
     Book.joins(:favorites)
         .where(favorites: { created_at: (0.days.ago.prev_week)..(0.days.ago.prev_week(:sunday)) })
         .group(:id)
-        .order("count(*) desd")
+        .order("count(*) desc")
   end
 
 end
