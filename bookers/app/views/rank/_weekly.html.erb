@@ -1,19 +1,34 @@
-<div class="rank-container">
- <% @ranks.each.do |book,i| %>
-  <div class="rank-box">
-   <%= i %>位
-    <div class="table">
-      <% book.book_comments.each do |book_comment| %>
-      <tr>
-        <th><%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></th>
-        <br>
-        <th><%= link_to @book.user.name,books_path %></th>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+       <th></th>
+       <th>Title</th>
+       <th>Opinion</th>
+       <th colspan="4"></th>
+     </tr>
+  </tead>
+  <tbody>
 
-
-        <th><%= book_comment.comment %></th>
-
+    <% @ranks.each do |book| %>
+    <tr>
+      <td>
+        <%= link_to user_path(book.user) do %>
+          <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: 'no-image.jpg', size:'50x50' %>
         <% end %>
+      </td>
+      <td><%= link_to book.title, book_path(book) %></td>
+      <td><%= book.body %></td>
 
-    </div>
-  </div>
+      <td>
+        <div id="book_<%= book.id %>">
+         <%= render 'favorites/favorite', book: book %>
+        </div>
+      </td>
 
+      <!--コメント数-->
+      <td>コメント数：<%= book.book_comments.count %></td>
+    <% end %>
+  </tbody>
+</table>
+
+<%# end %>

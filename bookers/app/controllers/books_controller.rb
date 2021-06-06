@@ -31,8 +31,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-
-
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
@@ -48,11 +46,6 @@ class BooksController < ApplicationController
       flash[:notice]="Book was successfully destroyed."
       redirect_to books_path
    end
-  end
-
-  def weekly_rank
-  	 @ranks = Book.last_week
-  	 #Book.Joins(:favorites).where(favorites: { created_at:  0.days.ago.prev_week..0 .days.ago.prev_week(:sunday)}.group(:id).order("count(*) desc"))
   end
 
   private
