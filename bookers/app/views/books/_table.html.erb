@@ -1,14 +1,14 @@
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
-       <th></th>
-       <th>Title</th>
-       <th>Opinion</th>
-       <th colspan="4"></th>
-     </tr>
-  <tbody>
-
-    <% @books.each do |book| %>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+   <% @books.each do |book| %>
+   <tbody>
     <tr>
       <td>
         <%= link_to user_path(book.user) do %>
@@ -24,16 +24,8 @@
         </div>
       </td>
 
-           <!--いいね一週間ランキング-->
-        
-        
-        <div id="book_<%= book.id %>">
-          <% render 'rank/weekly', books: ranks %>
-        </div>
-      </td>
-
       <td>コメント数：<%= book.book_comments.count %></td>
     </tr>
-    <% end %>
+   <% end %>
   </tbody>
 </table>
