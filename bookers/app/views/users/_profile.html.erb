@@ -22,16 +22,21 @@
     <th><%= link_to user.followers.count, user_followers_path(user) %></th>
    </tr>
    <tr>
-     <th colspan="4">
-	   <% if current_user == user %>
-	     <%= link_to edit_user_path(user),class:"btn btn-secondary" do %>
-		  <i class="fas fa-user-cog"></i>
-		 <% end %>
-		<% else %>
-		  <%= render 'relationships/follow_button', user: user %>
-		<% end %>
-		
-	  </th>
+    <th colspan="4">
+	     <% if current_user == user %>
+	      <%= link_to edit_user_path(user),class:"btn btn-secondary" do %>
+		       <i class="fas fa-user-cog"></i>
+	   	  <% end %>
+		    <% else %>
+		      <%= render 'relationships/follow_button', user: user %>
+
+		    <% end %>
+
+      <%# if current_user != user %>
+		      <%#= link_to 'chatを始める',chat_path(user.id) %>
+		    <%# end %>
+
+	    </th>
    </tr>
 
 </table>
