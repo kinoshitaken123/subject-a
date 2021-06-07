@@ -14,7 +14,7 @@ class Book < ApplicationRecord
 
   def self.last_week_ranks
     Book.joins(:favorites)
-        .where(favorites: { created_at: (0.days.ago.prev_week)..(0.days.ago.prev_week(:sunday)) })
+        .where(favorites: { created_at: (1.week.ago.beginning_of_day)..(Time.zone.now.end_of_day) })
         .group(:id)
         .order("count(*) desc")
   end
