@@ -1,16 +1,16 @@
 class ChatsController < ApplicationController
-    def 
+    def index
          # どのユーザーとチャットするかを取得。
-        @user = User.find(params[:id])
+        @user = User.find(params[:user_id])
         # カレントユーザーのuser_roomにあるroom_idの値の配列をroomsに代入。
         rooms = current_user.user_rooms.pluck(:room_id)
         # user_roomモデルから
         # user_idがチャット相手のidが一致するものと、
         # room_idが上記roomsのどれかに一致するレコードを
         # user_roomsに代入。
-        user_rooms UseRoom.find_by(user_id: @user.id, room_id: rooms)
+        user_rooms = UserRoom.find_by(user_id: @user_id, room_id: rooms)
         # もしuser_roomが空でないなら
-       unless user_rooms.nill?
+       unless user_rooms.nil?
          # @roomに上記user_roomのroomを代入
          @room = user_rooms.room
        else

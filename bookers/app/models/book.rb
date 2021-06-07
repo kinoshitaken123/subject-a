@@ -13,10 +13,11 @@ class Book < ApplicationRecord
   end
 
   def self.last_week_ranks
-    Book.joins(:favorites)
-        .where(favorites: { created_at: (1.week.ago.beginning_of_day)..(Time.zone.now.end_of_day) })
-        .group(:id)
-        .order("count(*) desc")
+    # 
+    relation = Book.left_joins(:favorites)
+    relation.merge(Favorite.where(created_at: (1.week.ago.beginning_of_day)..(Time.zone.now.end_of_day) ))
+            .or(relation.where(favorites: {created_at: nil}))
+            .group(:id)
+            .order("count(favorites.id) desc")
   end
-
-end
+end 

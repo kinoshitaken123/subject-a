@@ -32,9 +32,9 @@
 
 		    <% end %>
 
-      <%# if current_user != user %>
-		      <%#= link_to 'chatを始める',chat_path(user.id) %>
-		    <%# end %>
+      <% if current_user != user %>
+		      <%= link_to 'chatを始める',user_chats_path(user) %>
+		    <% end %>
 
 	    </th>
    </tr>
