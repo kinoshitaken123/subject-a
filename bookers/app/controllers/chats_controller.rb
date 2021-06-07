@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-    def show
+    def 
          # どのユーザーとチャットするかを取得。
         @user = User.find(params[:id])
         # カレントユーザーのuser_roomにあるroom_idの値の配列をroomsに代入。
