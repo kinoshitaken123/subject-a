@@ -15,6 +15,11 @@ class User < ApplicationRecord
   has_many :followings, through: :follower, source: :followed # 自分がフォローしている人
   has_many :followers, through: :followed, source: :follower  # 自分をフォローしている人(自分がフォローされている人)
   
+  #DM機能
+  has_many :chats, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+
+  
   attachment :profile_image
   # ユーザーをフォローする
   def follow(user_id)

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
      resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings',as: 'followings'
     get 'followers' => 'relationships#followers',as: 'followers'
+    resources :chates, only: [:create]
   end
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
       resource :favorites, only: [:create, :destroy]
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get '/home/about' => 'homes#about'
-  get "search" => "search#search"
+  get 'search' => 'search#search'
+  get 'chat/:id' => 'chat#show'
 end
