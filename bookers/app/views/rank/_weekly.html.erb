@@ -8,8 +8,7 @@
      </tr>
   </tead>
   <tbody>
-
-    <% @ranks.each do |book| %>
+  <% @ranks.each do |book| %>
     <tr>
       <td>
         <%= link_to user_path(book.user) do %>
@@ -27,8 +26,7 @@
 
       <!--コメント数-->
       <td>コメント数：<%= book.book_comments.count %></td>
-    <% end %>
+    </tr>
+  <% end %>
   </tbody>
 </table>
-
-<%# end %>

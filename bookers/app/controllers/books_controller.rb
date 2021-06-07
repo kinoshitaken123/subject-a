@@ -9,6 +9,7 @@ class BooksController < ApplicationController
   end
 
   def index
+    @ranks = Book.last_week_ranks
     @user = current_user
     @books = Book.all
     @book = Book.new
