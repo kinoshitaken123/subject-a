@@ -10,7 +10,6 @@ class BooksController < ApplicationController
 
   def index
     @ranks = Book.last_week_ranks
-    logger.debug "ranks=#{@ranks}"
     @user = current_user
     @books = Book.all
     @book = Book.new
