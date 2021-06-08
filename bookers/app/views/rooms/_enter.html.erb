@@ -1,7 +1,0 @@
-<% if room %>
-  <div class="row">
-    <%= link_to 'enter chat room', room_path(room) %>
-  </div>
-<% else %>
-  <%= link_to 'create chat room', user_rooms_path(user), method: :post %>
-<% end %>

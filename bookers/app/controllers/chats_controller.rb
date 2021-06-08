@@ -1,8 +1,8 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
 
-  def create
-    room = Room.find(params[:user_id])
+  def index
+    room = Room.find(params[:id])
     if UserRoom.where(user_id: current_user.id, room_id: room.id).present?
       current_user.chats.create(chat_params)
       @chats = room.chats
