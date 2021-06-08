@@ -1,2 +1,19 @@
-<!--チャットする詳細画面-->
-<h4><%= room.user.name %>さんとのチャット</h4>
+<h1>チャット</h1>
+
+<% @room.user_rooms.each do |room|%>
+<% unless room.user.id == current_user.id %>
+ <h4><%= room.user.name %>さん</h4>
+<% end %>
+
+<div class ="row">
+    <div class="col-xs-8" id="chats">
+        <%= rebder 'chates/show',chats: @chats %>
+    </div>
+</div>
+
+<%= form_with model: [@room,@chat], remote: true do |f| %>
+ <%= f.text_area :message, placeholder =>"メッセージを入力してください" %>
+ <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "ユーザー画面に戻る"user_path %>

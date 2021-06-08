@@ -5,6 +5,7 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
      @book = Book.new
      @books = Book.where(user_id: @user.id)
+     @room = Set_room(@user)
   end
 
   def index
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     @users = User.all
     @book = Book.new
     @books = Book.all
-  end  
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -39,5 +40,20 @@ class UsersController < ApplicationController
     unless @user == current_user
       redirect_to user_path(current_user)
     end
+  end
+  def set_room(user)
+    return nil if user.id == current_user.id
+
+    my_rooms = UserRoom.where(user_id: current_user.id)
+    user_rooms = UserRoom.where(user_id: user.id)
+
+    my_rooms.each do |my_room|
+      user_rooms.each do |user_room|
+        if my_room.room_id == user_room.room_id
+          return Room.find(my_room.room_id)
+        end
+      end
+    end
+    nil
   end
 end
