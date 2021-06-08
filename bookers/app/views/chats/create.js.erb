@@ -1,6 +1,6 @@
 $(".chats_form").html("<%= escape_javascript(render'chats/chats_form',chats: @chats) %>");
 
 <!--messageを部分更新。appendメソッドで要素を追加 */-->
-$('.chats_area').append("<p style='text-align: left;'><%= @chats %></p>");
+<!--$('.chats_area').append("<p style='text-align: left;'><%#= @chats %></p>");-->
 
 $("textarea").val('')
