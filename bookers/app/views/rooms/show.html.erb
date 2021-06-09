@@ -1,15 +1,13 @@
 <h1>チャット</h1>
 
-<% @room.user_rooms.each do |room|%>
-<% unless room.user.id == current_user.id %>
- <h4><%= room.user.name %>さん</h4>
-<% end %>
+ <!--chats表示-->
+<table id="chats_area">
+　<%= render 'chats/chats_index',chats: @chats %>
+</table>
 
+<!--chats 入力フォーム-->
 
-
-<%= form_with model: [@room, @chat],remote: true do |f| %>
+<%= form_with model: [@room, @chat], remote: true do |f| %>
   <%= f.text_area :message %>
   <%= f.submit "投稿する" %>
-<% end %>
-
 <% end %>
