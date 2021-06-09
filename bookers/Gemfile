@@ -80,7 +80,9 @@ gem 'ransack'
 
 gem 'jquery-rails'
 gem 'redis'
-
+#自動で文法チェックしてくれる機能
 gem 'rubocop', require: false
 gem 'rubocop-performance', require: false
 gem 'rubocop-rails', require: false
+#PV数
+gem 'impressionist', '~>1.6.1'

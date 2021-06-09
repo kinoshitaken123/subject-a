@@ -7,7 +7,7 @@
 
 <!--chats 入力フォーム-->
 
-<%= form_with model: [@room, @chat], remote: true do |f| %>
-  <%= f.text_area :message %>
-  <%= f.submit "投稿する" %>
-<% end %>
+ <%= form_with model: [@room, @chat], remote: true do |f| %>
+   <%= f.text_area :message %>
+   <%= f.submit "投稿する" %>
+ <% end %>
