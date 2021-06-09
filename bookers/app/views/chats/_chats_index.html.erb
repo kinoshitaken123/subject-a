@@ -1,0 +1,8 @@
+<% if chats.present? %>
+  <% chats.each do |chat| %>
+    <p class="<%= current_user.id == chat.user.id ? "my_chat" : "others_chat" %>"><%= chat.message %></p>
+    <hr>
+  <% end %>
+<% else %>
+  <h4>メッセージはまだありません</h4>
+<% end %>
