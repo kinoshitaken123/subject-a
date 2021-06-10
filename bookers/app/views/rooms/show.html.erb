@@ -8,6 +8,6 @@
 <!--chats 入力フォーム-->
 
  <%= form_with model: [@room, @chat], remote: true do |f| %>
-   <%= f.text_area :message %>
+   <%= f.hidden_field :message %>
    <%= f.submit "投稿する" %>
  <% end %>

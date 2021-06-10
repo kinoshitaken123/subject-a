@@ -11,14 +11,13 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :book_comments, only: [:create, :destroy]
     end
-  resources :rooms, :only => [:show, :index] do
+  resources :rooms , :only => [:show, :index] do
   resources :chats, :only => [:create]
   end
   root 'homes#top'
   get '/home/about' => 'homes#about'
   get 'search' => 'search#search'
-
   get 'chat/:id' => 'chats#show', as: 'chat'
-resources :chats, only: [:create]
+
 
 end

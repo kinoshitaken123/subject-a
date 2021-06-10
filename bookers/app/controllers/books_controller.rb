@@ -1,12 +1,10 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
 
-  impressionist :actions=> [:show, :index]
+  impressionist :actions=> [:show]
 
   def show
     @book = Book.find(params[:id])
-    #同じ人アクセス（同じブラウザからアクセス）した複数回、同じ記事をみた場合は1PV
-    #impressionist(@book, nil, unique: [:session_hash])
     @book_new = Book.new
     @book_comment = BookComment.new
   end
@@ -50,19 +48,6 @@ class BooksController < ApplicationController
       flash[:notice]="Book was successfully destroyed."
       redirect_to books_path
    end
-  end
-
-  def self.last_week_ranks
-  # left_joinsメソッドとは、関連するレコードが有る無しに関わらずレコードのセットを取得してくれるメソッドです
-    relation = Book.left_joins(:favorites)
-    relation.merge(Favorite.where(created_at: (1.week.ago.beginning_of_day)..(Time.zone.now.end_of_day) ))
-  # favaritesのnilのデータも取得したいのでnilを設定する
-    relation = Book.left_joins(:favorites)
-            .or(relation.where(favorites: {created_at: nil}))
-            .group(:id)
-            .order("count(favorites.id) desc")
-  # favaritesのnilのデータも取得したいのでnilを設定する
-  # desc 多い順
   end
 
   private

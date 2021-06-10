@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
-  #計測したい時に使用するもの
-  is_impressionable
-
+  
+  is_impressionable counter_cache: true
+  
 	belongs_to :user, optional: true #Userモデルと1：N
 
 	validates :title, presence: true
@@ -15,7 +15,6 @@ class Book < ApplicationRecord
   end
 
   def self.last_week_ranks
-    
   # left_joinsメソッドとは、関連するレコードが有る無しに関わらずレコードのセットを取得してくれるメソッドです
     relation = Book.left_joins(:favorites)
     relation.merge(Favorite.where(created_at: (1.week.ago.beginning_of_day)..(Time.zone.now.end_of_day) ))
@@ -27,4 +26,4 @@ class Book < ApplicationRecord
   # favaritesのnilのデータも取得したいのでnilを設定する
   # desc 多い順
   end
-end
+end 
