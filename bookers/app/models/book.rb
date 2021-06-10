@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
-
+  
+  is_impressionable counter_cache: true
+  
 	belongs_to :user, optional: true #Userモデルと1：N
 
 	validates :title, presence: true

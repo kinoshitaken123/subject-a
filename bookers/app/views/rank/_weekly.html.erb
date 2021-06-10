@@ -1,3 +1,4 @@
+
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
@@ -26,6 +27,9 @@
 
       <!--コメント数-->
       <td>コメント数：<%= book.book_comments.count %></td>
+
+      <!--閲覧数-->
+      <td>閲覧数:<%= book.impressionist_count %></td>
     </tr>
   <% end %>
   </tbody>
