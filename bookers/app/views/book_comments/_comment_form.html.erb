@@ -1,7 +1,4 @@
-<%= form_with(model:[book, @book_comment], id: "new_comment") do |f| %> 
-<!--配列でインスタンス変数を2つ指定。コメントは、@bookに結びついた@commentだから-->
-
-  <%= f.text_area :comment, size: "10x10", class: "form-control" %> <br>
-
+<%= form_with(model:[book, @book_comment], id: "new_comment") do |f| %> <!--配列でインスタンス変数を2つ指定。コメントは、@bookに結びついた@commentだから-->
+  <%= f.text_area :comment, size: "10x10", class: "form-control" %>
   <%= f.submit "送信"  %>
 <% end %>
