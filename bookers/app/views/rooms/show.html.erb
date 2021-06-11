@@ -1,13 +1,41 @@
-<h1>チャット</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+     
 
- <!--chats表示-->
-<table id="chats_area">
-　<%= render 'chats/chats_index',chats: @chats %>
-</table>
-
-<!--chats 入力フォーム-->
+            <table class="message table">
+              <thead>
+                <tr>
+                  <th style="text-align: left; font-size: 20px;"><%= current_user.name %>とのチャット</th>
+           
+                </tr>
+              </thead>
+              <% @chats.each do |chat| %>
+                <% if chat.user_id == current_user.id %>
+                <tbody>
+                  <tr>
+                    <th>
+                      <p style="text-align: left;"><%= chat.message %></p>
+                    </th>
+                    <th></th>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <th></th>
+                    <th>
+                      <p style="text-align: right;"><%= chat.message %></p>
+                    </th>
+                  </tr>
+                </tbody>
+                <% end %>
+              <% end %>
+            </table>
 
  <%= form_with model: [@room, @chat], remote: true do |f| %>
-   <%= f.hidden_field :message %>
-   <%= f.submit "投稿する" %>
- <% end %>
+              <%= f.text_field :message %>
+              <%= f.hidden_field :room_id %>
+              <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+            <% end %>
+        </div>
+    </div>
+</div>
